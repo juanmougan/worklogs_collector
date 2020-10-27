@@ -10,13 +10,17 @@ Plain and simple: I don't want to forget to log my hours :)
 
 1. Create a `jira-rest-client.properties` in your `src/main/resources/` folder, with the following content:
 
-    jira.url=<your Jira URL>
-    jira.username=<Your username>
-    jira.password=<Your password>
+```
+jira.url=<your Jira URL>
+jira.username=<Your username>
+jira.password=<Your password>
+```
 
 2. Run it from command line
 3. You'll see something like
 
-    2020-10-27 15:15:01.877  INFO 22224 --- [           main] c.g.j.j.w.WorklogsCollectorApplication   : Today logged 180 minutes in 1 tickets
+```
+2020-10-27 15:15:01.877  INFO 22224 --- [           main] c.g.j.j.w.WorklogsCollectorApplication   : Today logged 180 minutes in 1 tickets
+```
 
 Enjoy!
