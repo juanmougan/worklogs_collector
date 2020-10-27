@@ -36,6 +36,9 @@ public class WorklogsCollectorApplication implements CommandLineRunner {
   @Value("${jira.password}")
   private String jiraPassword;
 
+  @Value("${jira.worklogs.query}")
+  private String query;
+
   public static void main(String[] args) {
     SpringApplication.run(WorklogsCollectorApplication.class, args);
   }
@@ -48,7 +51,7 @@ public class WorklogsCollectorApplication implements CommandLineRunner {
 
     final SearchResult loggedToday = jiraRestClient
         .getSearchClient()
-        .searchJql("worklogAuthor = currentUser() AND worklogDate >= startOfDay() AND worklogDate <= endOfDay()")
+        .searchJql(query)
         .claim();
     final int totalIssuesWithLoggedTime = loggedToday.getTotal();
 
