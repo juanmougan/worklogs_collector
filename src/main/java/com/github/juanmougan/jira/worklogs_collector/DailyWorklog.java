@@ -4,6 +4,6 @@ import lombok.Value;
 
 @Value
 public class DailyWorklog {
-  int totalIssuesWithLoggedTime;
-  int todayLoggedMinutes;
+  int totalTickets;
+  int minutesLogged;
 }
