@@ -1,7 +1,9 @@
 package com.github.juanmougan.jira.worklogs_collector;
 
 import com.atlassian.jira.rest.client.api.JiraRestClient;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,12 +23,13 @@ public class WorklogsCollectorApplication implements CommandLineRunner {
     SpringApplication.run(WorklogsCollectorApplication.class, args);
   }
 
+  @SneakyThrows
   @Override
   public void run(final String... args) {
     final JiraRestClient jiraRestClient = jiraClientManager.getJiraRestClient();
 
     final DailyWorklog worklog = worklogService.getDailyWorklog(jiraRestClient);
 
-    System.out.printf("Today logged %d minutes in %d tickets%n", worklog.getTodayLoggedMinutes(), worklog.getTotalIssuesWithLoggedTime());
+    System.out.println(new ObjectMapper().writeValueAsString(worklog));
   }
 }
