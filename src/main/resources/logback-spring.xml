@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--TODO reenable this-->
+<!--See https://www.baeldung.com/spring-boot-disable-console-logging#logback for details-->
+<!--<configuration>-->
+<!--  <include resource=-->
+<!--               "org/springframework/boot/logging/logback/defaults.xml" />-->
+<!--  <include resource=-->
+<!--               "org/springframework/boot/logging/logback/file-appender.xml" />-->
+<!--  <root level="INFO">-->
+<!--    <appender-ref ref="FILE" />-->
+<!--  </root>-->
+<!--</configuration>-->
+
+<!-- This effectively blocks all logging. Disable it, once my app can receive a log file -->
+<configuration>
+
+</configuration>

@@ -66,6 +66,6 @@ public class WorklogsCollectorApplication implements CommandLineRunner {
         .map(TimeTracking::getTimeSpentMinutes)
         .reduce(0, Integer::sum);
 
-    log.info("Today logged {} minutes in {} tickets", todayLoggedMinutes, totalIssuesWithLoggedTime);
+    System.out.printf("Today logged %d minutes in %d tickets%n", todayLoggedMinutes, totalIssuesWithLoggedTime);
   }
 }
