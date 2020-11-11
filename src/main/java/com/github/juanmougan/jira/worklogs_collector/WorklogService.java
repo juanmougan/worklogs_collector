@@ -17,6 +17,9 @@ public class WorklogService {
   @Value("${jira.worklogs.query}")
   private String query;
 
+  @Value("${jira.daily.threshold.minutes}")
+  private int thresholdInMinutes;
+
   public DailyWorklog getDailyWorklog(final JiraRestClient jiraRestClient) {
     final SearchResult loggedToday = jiraRestClient
         .getSearchClient()
@@ -35,6 +38,17 @@ public class WorklogService {
         .map(TimeTracking::getTimeSpentMinutes)
         .reduce(0, Integer::sum);
 
-    return new DailyWorklog(totalIssuesWithLoggedTime, todayLoggedMinutes);
+    return new DailyWorklog(totalIssuesWithLoggedTime, todayLoggedMinutes, calculateStatus(todayLoggedMinutes));
+  }
+
+  // TODO refactor
+  private Status calculateStatus(final int todayLoggedMinutes) {
+    if (todayLoggedMinutes < thresholdInMinutes) {
+      return Status.BELOW;
+    } else if (todayLoggedMinutes == thresholdInMinutes) {
+      return Status.OK;
+    } else {
+      return Status.OVERTIME;
+    }
   }
 }
