@@ -1,6 +1,5 @@
 package com.github.juanmougan.jira.worklogs_collector;
 
-import com.atlassian.jira.rest.client.api.JiraRestClient;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -14,9 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class WorklogsCollectorApplication implements CommandLineRunner {
 
   @Autowired
-  private JiraClientManager jiraClientManager;
-
-  @Autowired
   private WorklogService worklogService;
 
   public static void main(String[] args) {
@@ -26,10 +22,7 @@ public class WorklogsCollectorApplication implements CommandLineRunner {
   @SneakyThrows
   @Override
   public void run(final String... args) {
-    final JiraRestClient jiraRestClient = jiraClientManager.getJiraRestClient();
-
-    final DailyWorklog worklog = worklogService.getDailyWorklog(jiraRestClient);
-
+    final DailyWorklog worklog = worklogService.getDailyWorklog();
     System.out.println(new ObjectMapper().writeValueAsString(worklog));
   }
 }

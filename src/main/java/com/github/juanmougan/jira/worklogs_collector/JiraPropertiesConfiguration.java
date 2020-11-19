@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-//@ComponentScan("com.baeldung.constructordi")
 @PropertySource({
     "classpath:jira-rest-client.properties"
 })

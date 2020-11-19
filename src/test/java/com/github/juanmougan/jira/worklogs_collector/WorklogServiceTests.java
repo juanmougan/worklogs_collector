@@ -36,14 +36,14 @@ class WorklogServiceTests {
 	@Test
 	void givenWorklogBelowThreshold_whenGetDailyWorklog_thenReturnBelowStatus() {
 		givenWorklogThresholdMatchingMinutes(thresholdInMinutes - 1);
-		final DailyWorklog worklog = worklogService.getDailyWorklog(jiraRestClient);
+		final DailyWorklog worklog = worklogService.getDailyWorklog();
 		assertThat(worklog).extracting(DailyWorklog::getStatus).isEqualTo(Status.BELOW);
 	}
 
 	@Test
 	void givenWorklogMatchingThreshold_whenGetDailyWorklog_thenReturnOkStatus() {
 		givenWorklogThresholdMatchingMinutes(thresholdInMinutes);
-		final DailyWorklog worklog = worklogService.getDailyWorklog(jiraRestClient);
+		final DailyWorklog worklog = worklogService.getDailyWorklog();
 		assertThat(worklog).extracting(DailyWorklog::getStatus).isEqualTo(Status.OK);
 	}
 
