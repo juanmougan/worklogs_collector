@@ -14,19 +14,19 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor(onConstructor_ = @Autowired)
 public class JiraClient {
 
-  private final JiraClientManager jiraClientManager;
+    private final JiraClientManager jiraClientManager;
 
-  public SearchResult search(final String query) {
-    return jiraClientManager.getJiraRestClient()
-            .getSearchClient()
-            .searchJql(query)
-            .claim();
-  }
+    public SearchResult search(final String query) {
+        return jiraClientManager.getJiraRestClient()
+                .getSearchClient()
+                .searchJql(query)
+                .claim();
+    }
 
-  public Issue getIssue(final String key) {
-    return jiraClientManager.getJiraRestClient()
-            .getIssueClient()
-            .getIssue(key)
-            .claim();
-  }
+    public Issue getIssue(final String key) {
+        return jiraClientManager.getJiraRestClient()
+                .getIssueClient()
+                .getIssue(key)
+                .claim();
+    }
 }
