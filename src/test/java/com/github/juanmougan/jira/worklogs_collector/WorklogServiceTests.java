@@ -77,7 +77,10 @@ class WorklogServiceTests {
 	static class JiraClientManagerTestConfiguration {
 		@Bean
 		public JiraClientManager jiraClientManager() {
-			return mock(JiraClientManager.class);
+			final JiraClientManager jiraClientManager = mock(JiraClientManager.class);
+			final JiraRestClient jiraRestClient = mock(JiraRestClient.class);
+			when(jiraClientManager.getJiraRestClient()).thenReturn(jiraRestClient);
+			return jiraClientManager;
 		}
 	}
 }
