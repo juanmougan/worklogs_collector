@@ -1,4 +1,5 @@
 jira-rest-client.properties
+application-local.properties
 
 HELP.md
 target/
