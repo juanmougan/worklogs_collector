@@ -20,8 +20,8 @@ import java.util.stream.StreamSupport;
         "classpath:application-local.properties"
 })
 public class WorklogService {
-  @Value("${jira.worklogs.query}")
-  private String query;
+  @Value("${jira.worklogs.query.daily}")
+  private String dailyQuery;
 
   @Value("${jira.daily.threshold.minutes}")
   private int thresholdInMinutes;
@@ -39,7 +39,7 @@ public class WorklogService {
   public DailyWorklog getDailyWorklog() {
     final SearchResult loggedToday = jiraRestClient
             .getSearchClient()
-            .searchJql(query)
+            .searchJql(dailyQuery)
             .claim();
     final int totalIssuesWithLoggedTime = loggedToday.getTotal();
 
