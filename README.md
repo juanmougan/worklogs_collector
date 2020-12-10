@@ -16,11 +16,18 @@ jira.username=<Your username>
 jira.password=<Your password>
 ```
 
-2. Run it from command line
-3. You'll see something like
+2. Configure your daily threshold on a `application-local.properties` file, in the same `resources` folder:
 
 ```
-2020-10-27 15:15:01.877  INFO 22224 --- [           main] c.g.j.j.w.WorklogsCollectorApplication   : Today logged 180 minutes in 1 tickets
+jira.daily.threshold.minutes=390
+```
+
+3. Run it from command line
+
+4. You'll see something like
+
+```
+{"totalTickets":1,"minutesLogged":420,"status":"OVERTIME"}
 ```
 
 ### When building the project
