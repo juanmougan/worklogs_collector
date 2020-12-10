@@ -6,4 +6,5 @@ import lombok.Value;
 public class DailyWorklog {
   int totalTickets;
   int minutesLogged;
+  Status status;
 }
