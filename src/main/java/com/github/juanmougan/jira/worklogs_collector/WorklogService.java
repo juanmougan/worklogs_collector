@@ -23,6 +23,9 @@ public class WorklogService {
   @Value("${jira.worklogs.query.daily}")
   private String dailyQuery;
 
+  @Value("${jira.worklogs.query.weekly}")
+  private String weeklyQuery;
+
   @Value("${jira.daily.threshold.minutes}")
   private int thresholdInMinutes;
 
